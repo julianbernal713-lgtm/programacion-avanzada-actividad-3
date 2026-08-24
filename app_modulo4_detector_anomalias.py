@@ -53,7 +53,7 @@ with tab1:
     col_cfg, col_data = st.columns([1, 2])
 
     with col_cfg:
-        n = st.slider("Número de lecturas (n)", 50, 5000, 500, 1000000 step=50)
+        n = st.slider("Número de lecturas (n)", 50, 5000, 500, 1000000, step=50)
         temp_umbral = st.slider("Umbral temperatura (°C) — mayor que", 15, 40, 30)
         hum_umbral = st.slider("Umbral humedad (%) — menor que", 20, 80, 40)
 
