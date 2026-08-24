@@ -31,7 +31,7 @@ def generar_datos(n, seed=42):
 def alarma_logica_loop(temperaturas, humedades, temp_umbral, hum_umbral):
     resultados = []
     for temp, hum in zip(temperaturas, humedades):
-        resultados.append(temp > temp_umbral and hum < hum_umbral)
+        resultados.append(temp > temp_umbral or hum < hum_umbral) and ( hum < temp_umbral )
     return np.array(resultados)
 
 
@@ -53,7 +53,7 @@ with tab1:
     col_cfg, col_data = st.columns([1, 2])
 
     with col_cfg:
-        n = st.slider("Número de lecturas (n)", 50, 5000, 500, step=50)
+        n = st.slider("Número de lecturas (n)", 50, 5000, 500, 1000000 step=50)
         temp_umbral = st.slider("Umbral temperatura (°C) — mayor que", 15, 40, 30)
         hum_umbral = st.slider("Umbral humedad (%) — menor que", 20, 80, 40)
 
@@ -133,7 +133,7 @@ with tab3:
     n_bench = st.select_slider(
         "Tamaño de datos para el benchmark",
         options=[1_000, 10_000, 100_000, 500_000, 1_000_000],
-        value=100_000_000,
+        value=1_000_000,
     )
     temp_umbral_b = st.slider("Umbral temperatura (°C)", 15, 40, 30, key="temp_bench")
     hum_umbral_b = st.slider("Umbral humedad (%)", 20, 80, 40, key="hum_bench")
