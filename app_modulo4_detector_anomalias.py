@@ -133,7 +133,7 @@ with tab3:
     n_bench = st.select_slider(
         "Tamaño de datos para el benchmark",
         options=[1_000, 10_000, 100_000, 500_000, 1_000_000],
-        value=100_000,
+        value=100_000_000,
     )
     temp_umbral_b = st.slider("Umbral temperatura (°C)", 15, 40, 30, key="temp_bench")
     hum_umbral_b = st.slider("Umbral humedad (%)", 20, 80, 40, key="hum_bench")
